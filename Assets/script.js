@@ -1,14 +1,11 @@
 
-
+// Password object 
 var passwordObj = {
   passLength: 0,
   includeSymbols: false,
   includeNumbers: false,
   includeLowerCase: false,
   includeUpperCase: false,
- 
-  // 0-9 == numbers, 9-35 == lowercase letters, 36-61 == uppercase, 62 -92 ==symbols
-  availChar: "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&'()*+,-./:;<=>?@[\]^_`{|}~",
  
   //Prompt user for criteria
   setCriteria: function() {
@@ -34,14 +31,6 @@ var passwordObj = {
 };
 
 
-
-
-
-
-
-
- 
-
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
@@ -54,15 +43,53 @@ function writePassword() {
 
 }
 
-// generatePassword(){
+function generatePassword(){
+
+  var generatedPass = "";
+  var currChar = "";
+  // 1-10 == numbers, 11-36 == lowercase letters, 37-62 == uppercase, 63 -93 ==symbols
+  var availChar = " 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&'()*+,-./:;<=>?@[\]^_`{|}~ ";
+  var currIndex = 0;
 
 
-// }
+  while (passwordObj.passLength != generatedPass.length){
+    
+    currIndex = Math.floor((Math.random() * 94) + 1);
+    currChar = availChar[currIndex];
+
+//     if( !passwordObj.includeSymbols && currIndex >= 63 && currIndex <= 93 ){
+//       continue;
+//     }
+
+//     if( !passwordObj.includeNumbers && currIndex >= 1 && currIndex <= 10 ){
+//       continue;
+//     }
+
+//     if( !passwordObj.includeLowerCase && currIndex >= 11 && currIndex <= 36 ){
+//       continue;
+//     }
+
+    
+//     if( !passwordObj.includeUpperCase && currIndex >= 37 && currIndex <= 62 ){
+//       continue;
+//     }
+
+    generatedPass += currChar;
+      
+
+  }
+  return generatedPass;
+
+
+}
 
 
 
-// Add event listener to generate button8
-// generateBtn.addEventListener("click", writePassword);
+// 9
+
+
+
+generateBtn.addEventListener("click", writePassword);
 
 
 passwordObj.setCriteria();
