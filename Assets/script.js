@@ -9,7 +9,7 @@ var passwordObj = {
  
   //Prompt user for criteria
   setCriteria: function() {
-
+    
     while( !((this.passLength >= 8) && (this.passLength <= 128))){
       this.passLength = parseInt(prompt("Please enter desired password length\nPassword must be a number between 8 and 128"));
     }
@@ -40,10 +40,10 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 function generatePassword(){
+  passwordObj.setCriteria();
 
   var generatedPass = "";
   var currChar = "";
@@ -51,28 +51,31 @@ function generatePassword(){
   var availChar = " 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&'()*+,-./:;<=>?@[\]^_`{|}~ ";
   var currIndex = 0;
 
-
   while (passwordObj.passLength != generatedPass.length){
     
-    currIndex = Math.floor((Math.random() * 94) + 1);
+    currIndex = Math.floor((Math.random() * 93) + 1);
     currChar = availChar[currIndex];
 
-//     if( !passwordObj.includeSymbols && currIndex >= 63 && currIndex <= 93 ){
-//       continue;
-//     }
+    if( !passwordObj.includeSymbols && currIndex >= 63 && currIndex <= 93 ){
+      continue;
+    }
 
-//     if( !passwordObj.includeNumbers && currIndex >= 1 && currIndex <= 10 ){
-//       continue;
-//     }
+    if( !passwordObj.includeNumbers && currIndex >= 1 && currIndex <= 10 ){
+      continue;
+    }
 
-//     if( !passwordObj.includeLowerCase && currIndex >= 11 && currIndex <= 36 ){
-//       continue;
-//     }
+    if( !passwordObj.includeLowerCase && currIndex >= 11 && currIndex <= 36 ){
+      continue;
+    }
 
     
-//     if( !passwordObj.includeUpperCase && currIndex >= 37 && currIndex <= 62 ){
-//       continue;
-//     }
+    if( !passwordObj.includeUpperCase && currIndex >= 37 && currIndex <= 62 ){
+      continue;
+    }
+
+
+
+
 
     generatedPass += currChar;
       
@@ -85,11 +88,8 @@ function generatePassword(){
 
 
 
-// 9
-
 
 
 generateBtn.addEventListener("click", writePassword);
 
 
-passwordObj.setCriteria();
