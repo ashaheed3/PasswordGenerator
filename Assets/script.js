@@ -6,28 +6,34 @@ var passwordObj = {
   includeNumbers: false,
   includeLowerCase: false,
   includeUpperCase: false,
+  // 0-9 == numbers, 9-35 == lowercase letters, 36-61 == uppercase, 62 -92 ==symbols
+  availChar: "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&'()*+,-./:;<=>?@[\]^_`{|}~",
+  //Prompt user for criteria
+  setCriteria: function() {
+
+    while( !((this.passLength >= 8) && (this.passLength <= 128)))
+    {
+    this.passLength = parseInt(prompt("Please enter desired password length\nPassword must be a number between 8 and 128"));
+    }
+
+
+
+  //   this.includeSymbols = confirm("Do you want to include symbols?");
+  //   this.includeNumbers = confirm("Do you want to include numbers?");
+  //   this.includeLowerCase = confirm("Do you want to include lowercase letters?");
+  //   this.includeUpperCase = confirm("Do you want to include upper case letters?");
+  }
 
 };
 
 
 
-function setCriteria() {
-
-  this.passLength = prompt("Enter password length");
-  this.includeSymbols = confirm("Do you want to include symbols?");
-  this.includeNumbers = confirm("Do you want to include numbers?");
-  this.includeLowerCase = confirm("Do you want to include lowercase letters?");
-  this.includeUpperCase = confir
-
-  
-
-
-}
 
 
 
-// 0-9 == numbers, 9-35 == lowercase letters, 36-61 == uppercase, 62 -92 ==symbols
-var availChar = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+
+
+ 
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -41,12 +47,15 @@ function writePassword() {
 
 }
 
-generatePassword(){
+// generatePassword(){
 
 
-}
+// }
 
 
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+// Add event listener to generate button8
+// generateBtn.addEventListener("click", writePassword);
+
+
+passwordObj.setCriteria();
